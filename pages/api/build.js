@@ -5,13 +5,12 @@ export default async function handler(req, res) {
 
   try {
     const { cards } = await fetch(
-      "https://api.magicthegathering.io/v1/cards?set=10E&pageSize=10"
-    );
+      "https://api.magicthegathering.io/v1/cards?set=10E&pageSize=300"
+    ).then((r) => r.json());
     await Promise.all(
       cards.map((card) => res.revalidate(`/card/${card.name}`))
     );
-    await res.revalidate("/card/Cultivate");
-    return res.json({ revalidated: true });
+    return res.json({ "build done": true });
   } catch (err) {
     console.log(err);
     return res.status(500).send("Error revalidating");

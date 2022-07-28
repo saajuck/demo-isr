@@ -31,17 +31,11 @@ export async function getStaticProps({ params }) {
       card: (await getCard(params.name)).cards,
       getStaticProps: true,
     },
-    revalidate: 60,
+    revalidate: 6000,
   };
 }
 
 export async function getStaticPaths() {
-  // const {cards} = await getCards()
-  // console.log('getStaticPaths', cards.length)
-  // const paths = cards.map((card) => ({
-  //   params: { name: card.name.replace(' ', '-') }
-  // }))
-
   return { paths: [], fallback: "blocking" };
 }
 
