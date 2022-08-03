@@ -1,12 +1,3 @@
-const END_POINT = "https://api.magicthegathering.io/v1/";
-
-const getCards = async () => {
-  console.log("<>><<<>>>><<>>><<>><");
-  console.log("fetching 5 cards  ");
-  return fetch("https://api.magicthegathering.io/v1/cards?pageSize=5").then(
-    (a) => a.json()
-  );
-};
 
 const getCard = async (name) => {
   console.log("fetching card: ", name);
